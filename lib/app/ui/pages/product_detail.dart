@@ -20,7 +20,6 @@ class _ProductDetailState extends State<ProductDetail> {
 
   @override
   void initState() {
-    //getProduct();
     super.initState();
   }
 
@@ -122,6 +121,5 @@ class _ProductDetailState extends State<ProductDetail> {
 
   Future<Product> getProduct() async {
     return product = await productService.getProductDetail(id: widget.id);
-    //setState(() {});
   }
 }

@@ -53,8 +53,6 @@ class _FormLoginState extends State<_FormLogin> {
   bool noPress = true;
   @override
   Widget build(BuildContext context) {
-    //final auth = Provider.of<AuthService>(context);
-    //final auth = context.watch<AuthenticationService>().authStateChanges;
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 50),
       child: Column(
@@ -74,9 +72,6 @@ class _FormLoginState extends State<_FormLogin> {
           ),
           BlueBoton(
             text: "Ingrese",
-            /* Si autenticando es true, el boton queda oscuro (en null), sino se habilita el boton.
-               Así se evita el doble post
-             */
             onPress: noPress
                 ? () async {
                     // Quita el focus de donde esté y ocultará el teclado si está desplegado

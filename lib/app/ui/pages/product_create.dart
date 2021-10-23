@@ -179,13 +179,6 @@ class _ProductCreateState extends State<ProductCreate> {
               result,
             );
           }
-          //print(result);
-          /*if (formDni.trim() != "0") {
-                          _onActualizar();
-                        } else {
-                          AlertManager.mostrarError(
-                              context, "EL CI es inválido");
-                        }*/
         },
         child: Container(
           alignment: Alignment.center,

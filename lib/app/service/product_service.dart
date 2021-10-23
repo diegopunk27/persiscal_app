@@ -26,7 +26,7 @@ class ProductService with ChangeNotifier {
     final response = await http.get(
       "${Environment.apiUrl}/productos",
     );
-    print(response.body);
+    //print(response.body);
 
     if (response.statusCode == 200) {
       final listProduct = productFromJson(response.body);

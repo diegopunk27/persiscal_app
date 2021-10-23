@@ -34,10 +34,7 @@ mostrarDialogoWithRoute(
         actions: <Widget>[
           MaterialButton(
             onPressed: () => Navigator.pushNamedAndRemoveUntil(
-                context,
-                route,
-                (Route<dynamic> route) =>
-                    false), //Navigator.of(context).pushReplacementNamed(route),
+                context, route, (Route<dynamic> route) => false),
             child: Text("Ok"),
             elevation: 5,
             color: Colors.blue,

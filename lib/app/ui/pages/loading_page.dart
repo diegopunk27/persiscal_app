@@ -15,22 +15,10 @@ class LoadingPage extends StatelessWidget {
     }
     return LoginPage();
   }
-  /*FutureBuilder(
-        future: loading(context),
-        builder: (_, snapshot) {
-          return Center(
-            child: CircularProgressIndicator(),
-          );
-        },
-      ),
-    );*/
 
   Future loading(BuildContext context) async {
     final firebaseuser = context.watch<User>();
     if (firebaseuser != null) {
-      /* Se utiliza el "pushReplacement(PageRouteBuilder" para poder configurar los efectos
-        de despliegue de la pantalla
-       */
       Navigator.of(context).pushReplacement(PageRouteBuilder(
         pageBuilder: (_, __, ___) => HomePage(),
       ));

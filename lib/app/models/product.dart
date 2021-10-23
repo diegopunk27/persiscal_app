@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final product = productFromJson(jsonString);
-
 import 'dart:convert';
 
 List<Product> productFromJson(String str) =>

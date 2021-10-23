@@ -29,7 +29,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    //final prod = Provider.of<ProductService>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text("Productos"),

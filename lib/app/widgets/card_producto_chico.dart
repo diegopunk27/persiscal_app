@@ -17,9 +17,7 @@ class _CardProductoChicoState extends State<CardProductoChico> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        //AppNavigator.goToDetallesProducto(context);
-      },
+      onTap: () {},
       child: Container(
         margin: EdgeInsets.only(
           top: 10,

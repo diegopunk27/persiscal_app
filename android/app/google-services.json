@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "127653010544",
+    "project_id": "persiscal-554bd",
+    "storage_bucket": "persiscal-554bd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:127653010544:android:55c100c6881af065ec28b5",
+        "android_client_info": {
+          "package_name": "com.persical.proypersical"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "127653010544-v9t7re18hnc0bhp3tji9i1n5613dvlpe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlUAJ0V_J61raNMVXj_5SZAaOggeJnZzg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "127653010544-v9t7re18hnc0bhp3tji9i1n5613dvlpe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
