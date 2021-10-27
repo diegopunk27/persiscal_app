@@ -32,6 +32,9 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'Persiscal',
+        theme: ThemeData(
+            //color for scrollbar
+            highlightColor: Colors.blue),
         debugShowCheckedModeBanner: false,
         initialRoute: 'loading',
         routes: appRoutes,

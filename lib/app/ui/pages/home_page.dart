@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
@@ -15,10 +17,13 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final productService = new ProductService();
+  StreamController _postsController;
   List<Product> products = [];
 
   @override
   void initState() {
+    _postsController = new StreamController();
+    getPost();
     super.initState();
   }
 
@@ -54,44 +59,54 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      body: FutureBuilder(
-        future: getProducts(),
-        builder: (context, snapshot) {
+      body: StreamBuilder(
+        stream: _postsController.stream,
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.hasError) {
-            return Center(child: Text("Error: ${snapshot.error}"));
+            return Center(
+              child: Text("Ocurrio el siguiente error ${snapshot.error}"),
+            );
           }
           if (!snapshot.hasData) {
             return Center(child: CircularProgressIndicator());
           }
 
-          return Container(
-            child: GridView.builder(
-              physics: BouncingScrollPhysics(),
-              gridDelegate:
-                  SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-              itemCount: products.length,
-              itemBuilder: (context, index) {
-                if (products == null) {
-                  return CircularProgressIndicator();
-                }
+          products = snapshot.data;
 
-                return CardProducto(
-                  imagen: products[index].imagen.length > 0
-                      ? products[index].imagen
-                      : null,
-                  precio: products[index].precio,
-                  titulo: products[index].nombre,
-                  onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => ProductDetail(
-                          id: products[index].id,
-                        ),
-                      ),
+          return Scrollbar(
+            child: RefreshIndicator(
+              onRefresh: getPost,
+              child: Container(
+                child: GridView.builder(
+                  shrinkWrap: true,
+                  physics: BouncingScrollPhysics(),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2),
+                  itemCount: products.length,
+                  itemBuilder: (context, index) {
+                    if (products == null) {
+                      return CircularProgressIndicator();
+                    }
+
+                    return CardProducto(
+                      imagen: products[index].imagen.length > 0
+                          ? products[index].imagen
+                          : null,
+                      precio: products[index].precio,
+                      titulo: products[index].nombre,
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => ProductDetail(
+                              id: products[index].id,
+                            ),
+                          ),
+                        );
+                      },
                     );
                   },
-                );
-              },
+                ),
+              ),
             ),
           );
         },
@@ -107,7 +122,15 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Future getProducts() async {
+  /*Future getProducts() async {
     return products = await productService.getProducts();
+  }*/
+
+  Future getPost() async {
+    await Future.delayed(Duration(seconds: 2));
+    productService.getProducts().then((res) async {
+      _postsController.add(res);
+      return res;
+    });
   }
 }
